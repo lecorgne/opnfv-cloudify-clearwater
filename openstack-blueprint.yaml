@@ -491,16 +491,15 @@ groups:
         type: cloudify.policies.types.threshold
         properties:
           service: cpu.total.user
-          threshold: 25
           stability_time: 60
+          threshold: 25
         triggers:
           scale_trigger:
             type: cloudify.policies.triggers.execute_workflow
             parameters:
               workflow: scale
               workflow_parameters:
-                scalable_entity_name: sprout
-                scale_compute: true
+                node_id: sprout
                 delta: 1
                 max_instances: 5
                 
@@ -508,16 +507,15 @@ groups:
         type: cloudify.policies.types.threshold
         properties:
           service: cpu.total.user
-          threshold: 10
           stability_time: 60
+          threshold: 10
         triggers:
           scale_trigger:
             type: cloudify.policies.triggers.execute_workflow
             parameters:
               workflow: scale
               workflow_parameters:
-                scalable_entity_name: sprout
-                scale_compute: true
+                node_id: sprout
                 delta: -1
                 min_instances: 1
                 
